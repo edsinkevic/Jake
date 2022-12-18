@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{5DF1AB72-09DD-4F6E-946F-6186495D997A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{0FAC4240-00A1-40C4-90D6-2D78C5789D54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{0BF160E3-9D4A-478B-AB4A-238A59161816}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BE8F8368-B13B-459A-B64D-832125FD215E}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+		.dockerignore = .dockerignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DF1AB72-09DD-4F6E-946F-6186495D997A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF1AB72-09DD-4F6E-946F-6186495D997A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF1AB72-09DD-4F6E-946F-6186495D997A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF1AB72-09DD-4F6E-946F-6186495D997A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FAC4240-00A1-40C4-90D6-2D78C5789D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FAC4240-00A1-40C4-90D6-2D78C5789D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FAC4240-00A1-40C4-90D6-2D78C5789D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FAC4240-00A1-40C4-90D6-2D78C5789D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BF160E3-9D4A-478B-AB4A-238A59161816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF160E3-9D4A-478B-AB4A-238A59161816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF160E3-9D4A-478B-AB4A-238A59161816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF160E3-9D4A-478B-AB4A-238A59161816}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0BF160E3-9D4A-478B-AB4A-238A59161816} = {BE8F8368-B13B-459A-B64D-832125FD215E}
+		{0FAC4240-00A1-40C4-90D6-2D78C5789D54} = {BE8F8368-B13B-459A-B64D-832125FD215E}
+		{5DF1AB72-09DD-4F6E-946F-6186495D997A} = {BE8F8368-B13B-459A-B64D-832125FD215E}
+	EndGlobalSection
+EndGlobal
