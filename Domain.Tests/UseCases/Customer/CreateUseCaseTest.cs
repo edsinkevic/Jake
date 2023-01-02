@@ -1,14 +1,10 @@
 using System.Threading.Tasks;
 using Domain.Email;
 using Domain.Errors;
-using Domain.Models;
 using Domain.Repositories.Business;
 using Domain.Repositories.Customer;
 using Domain.Repositories.Verification;
 using Domain.UseCases.Customer;
-using Infrastructure.Database;
-using Infrastructure.Email;
-using Infrastructure.Persistence.InMemory;
 using Moq;
 using Xunit;
 
