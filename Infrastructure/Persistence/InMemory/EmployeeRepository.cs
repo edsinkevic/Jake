@@ -1,7 +1,6 @@
 using Domain.Errors;
 using Domain.Models;
 using Domain.Repositories.Employee;
-using Domain.UseCases.Employee;
 using Infrastructure.Database;
 using Infrastructure.Models;
 
@@ -20,15 +19,9 @@ public class EmployeeRepository : IEmployeeRepository
     {
         var employee = new Data.Employee
         {
-            Address = employeeDto.Address,
-            City = employeeDto.City,
             Email = employeeDto.Email,
-            Fullname = employeeDto.Fullname,
-            Id = employeeDto.Id,
             Password = employeeDto.Password,
-            PhoneNumber = employeeDto.PhoneNumber,
-            Privileges = new List<Privilege>(),
-            Username = employeeDto.Username
+            Privileges = new List<Data.Privilege>(),
         };
         await _context.Employees.AddAsync(employee);
         await _context.SaveChangesAsync();
@@ -39,8 +32,13 @@ public class EmployeeRepository : IEmployeeRepository
     {
         var employee = await FindEmployee(employeeDto.EmployeeId);
 
-        employee.Privileges.RemoveAll(privilege =>
+        var domainPrivileges = employee.DomainPrivileges();
+
+        domainPrivileges.RemoveAll(privilege =>
             employeeDto.RemovePrivileges.Exists(privilegeToRemove => privilegeToRemove == privilege));
+
+        employee.Privileges =
+            DomainPrivilegesToData(employee.Id, domainPrivileges);
 
         _context.Attach(employee);
 
@@ -53,12 +51,19 @@ public class EmployeeRepository : IEmployeeRepository
     {
         var employee = await FindEmployee(employeeDto.EmployeeId);
 
-        employee.Privileges = employee.Privileges.Union(employeeDto.AddPrivileges).ToList();
+        var privileges = employee.DomainPrivileges().Union(employeeDto.AddPrivileges).ToList();
+        employee.Privileges =
+            DomainPrivilegesToData(employee.Id, privileges);
 
         _context.Attach(employee);
         await _context.SaveChangesAsync();
 
         return employee.ToDomain();
+    }
+
+    public async Task<bool> Exists(long dtoEmployeeId)
+    {
+        return await _context.Employees.FindAsync(dtoEmployeeId) != null;
     }
 
     private async Task<Data.Employee> FindEmployee(long id)
@@ -70,4 +75,7 @@ public class EmployeeRepository : IEmployeeRepository
 
         return employee;
     }
+
+    private static List<Data.Privilege> DomainPrivilegesToData(long employeeId, IEnumerable<Privilege> privileges) =>
+        privileges.Select(x => new Data.Privilege { EmployeeId = employeeId, PrivilegeType = x }).ToList();
 }

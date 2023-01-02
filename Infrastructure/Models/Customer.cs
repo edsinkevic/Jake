@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Models;
 
-
 public partial class Data
 {
     public class Customer
@@ -21,10 +20,11 @@ public partial class Data
         [Required] public string Email { get; set; } = null!;
         public string Address { get; set; } = null!;
 
+        public List<CustomerSession> Sessions { get; set; } = null!;
+
         public Domain.Models.Customer ToDomain() => new()
         {
-            Address = Address, BusinessId = BusinessId, Email = Email, Id = Id, Password = Password,
-            PhoneNumber = PhoneNumber, Username = Username
+            BusinessId = BusinessId, Email = Email, Id = Id, PasswordHash = Password,
         };
     }
 }

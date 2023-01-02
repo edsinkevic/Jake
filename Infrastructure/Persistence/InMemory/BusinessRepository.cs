@@ -28,4 +28,10 @@ public class BusinessRepository : IBusinessRepository
         var businesses = await _context.Businesses.Select(x => x.ToDomain()).ToListAsync();
         return businesses;
     }
+
+    public async Task<Business?> Get(long customerDtoBusinessId)
+    {
+        var business = await _context.Businesses.FindAsync(customerDtoBusinessId);
+        return business?.ToDomain();
+    }
 }

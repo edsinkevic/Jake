@@ -1,6 +1,3 @@
-using System.Reflection.Metadata.Ecma335;
-using Domain.Models;
-using Jake.Requests;
 using Jake.Requests.Customer;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

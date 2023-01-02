@@ -5,7 +5,7 @@ using Infrastructure.Models;
 
 namespace Infrastructure.Persistence.InMemory;
 
-class BusinessLocationRepository : IBusinessLocationRepository
+public class BusinessLocationRepository : IBusinessLocationRepository
 {
     private readonly InMemoryDbContext _context;
 

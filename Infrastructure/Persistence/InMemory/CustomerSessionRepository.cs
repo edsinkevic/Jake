@@ -46,11 +46,11 @@ public class CustomerSessionRepository : ICustomerSessionRepository
         var sessions = await _context.CustomerSessions.Where(x => x.SessionToken == sessionToken).ToListAsync();
         if (sessions.Count == 0)
             return null;
-        var session = sessions.First().ToDomain();
+        var session = sessions.First();
         session.Expire();
         _context.Attach(session);
         await _context.SaveChangesAsync();
-        return session;
+        return session.ToDomain();
     }
 
     private static string GenerateSessionToken()

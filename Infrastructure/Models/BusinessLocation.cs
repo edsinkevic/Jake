@@ -5,7 +5,7 @@ public partial class Data
     public class BusinessLocation
     {
         public long Id { get; set; }
-        public Business Business { get; set; } = null!;
+        public Business? Business { get; set; }
         public string Name { get; set; } = null!;
         public string Street { get; set; } = null!;
         public string City { get; set; } = null!;
@@ -16,7 +16,7 @@ public partial class Data
         {
             return new Domain.Models.BusinessLocation
             {
-                Business = Business.ToDomain(), City = City, Id = Id, Name = Name, PhoneNumber = PhoneNumber,
+                Business = Business?.ToDomain(), City = City, Id = Id, Name = Name, PhoneNumber = PhoneNumber,
                 Street = Street,
                 ZipCode = ZipCode
             };

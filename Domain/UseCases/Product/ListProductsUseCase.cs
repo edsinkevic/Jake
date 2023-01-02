@@ -12,8 +12,8 @@ public class ListProductsUseCase
         _products = products;
     }
 
-    public async Task<List<Models.Product>> Execute(ListProductsDto dto)
+    public async Task<List<Models.Product>> Execute()
     {
-        return await _products.List(dto);
+        return await _products.List();
     }
 }

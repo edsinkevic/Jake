@@ -8,4 +8,5 @@ public interface ICustomerRepository
     public Task<IEnumerable<Models.Customer>> List();
     public Task Update(UpdateCustomerDto customerDto);
     public Task Delete(long customerId);
+    public Task<Models.Customer?> Find(long dtoCustomerId);
 }

@@ -4,4 +4,5 @@ public interface IBusinessRepository
 {
     public Task<Models.Business> Create(CreateBusinessDto businessDto);
     public Task<IEnumerable<Models.Business>> List();
+    Task<Models.Business?> Get(long customerDtoBusinessId);
 }

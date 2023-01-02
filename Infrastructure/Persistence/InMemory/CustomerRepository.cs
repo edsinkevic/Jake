@@ -72,4 +72,10 @@ public class CustomerRepository : ICustomerRepository
         _context.Customers.Remove(customer);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<Customer?> Find(long dtoCustomerId)
+    {
+        var customer = await _context.Customers.FindAsync(dtoCustomerId);
+        return customer?.ToDomain();
+    }
 }
